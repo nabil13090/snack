@@ -8,11 +8,11 @@
   },
   "scripts": {
     "dev": "vite --port=3000 --host=0.0.0.0",
-    "build": "node scripts/generate-sitemap.mjs && node --max-old-space-size=4096 ./node_modules/vite/bin/vite.js build",
+    "build": "node scripts/generate-sitemap.mjs && vite build",
     "build:hostinger": "npm install && npm run build",
     "start": "node server.js",
     "preview": "vite preview",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf build dist",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

@@ -14,12 +14,9 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: "dist",
+    outDir: "build",
+    emptyOutDir: true,
     sourcemap: false,
     chunkSizeWarningLimit: 3000,
-  },
-  server: {
-    hmr: process.env.DISABLE_HMR !== "true",
-    watch: process.env.DISABLE_HMR === "true" ? null : {},
   },
 });

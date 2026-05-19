@@ -1,66 +1,57 @@
-# Déployer Snack Du Lion sur Hostinger
+# Déployer sur Hostinger — réglages exacts
 
-Vite **ne tourne pas sur le serveur** : il compile le site en fichiers HTML/CSS/JS (`dist/`).  
-C’est le même principe qu’un site Next.js après `npm run build` — seul le résultat est envoyé en ligne.
+## Ce que tu dois choisir dans l’écran Hostinger
 
-## Option 1 — Hébergement web (le plus simple)
+| Champ | Valeur à mettre |
+|-------|-----------------|
+| **Préréglage de framework** | **Express** (recommandé) ou **Autre** — **PAS** « Create React App » si ça plante |
+| **Branche** | `main` |
+| **Version de Node** | **20.x** (ou 18.x minimum) |
+| **Commande de compilation** | `npm install && npm run build` |
+| **Gestionnaire de paquets** | `npm` |
+| **Répertoire de sortie** | `build` |
+| **Commande de démarrage** (si Express) | `npm start` |
 
-Idéal si tu utilises le **gestionnaire de fichiers** ou FTP.
+### Variables d’environnement (clique « Ajouter »)
 
-1. Sur ton PC :
-   ```bash
-   npm install
-   npm run build
-   ```
-2. Dans **hPanel → Fichiers → public_html**, supprime l’ancien contenu.
-3. Envoie **tout le contenu du dossier `dist/`** (pas le dossier `dist` lui-même).
-4. Vérifie que `.htaccess` est bien présent (copié depuis `public/` au build).
-
-Aucun Node.js requis sur Hostinger.
-
----
-
-## Option 2 — Hostinger Node.js (comme ton projet t3coms / Next)
-
-Si tu déploies via **Git + Node.js** (même workflow que `te3coms-portfolio`) :
-
-| Paramètre        | Valeur              |
-|------------------|---------------------|
-| Branche Git      | `main`              |
-| Build command    | `npm install && npm run build` |
-| Start command    | `npm start`         |
-| Version Node     | 20.x (recommandé)   |
-| Racine           | `/` (racine du repo) |
-
-> Si le build échoue encore : utilise `npm run build:hostinger` comme commande de build.
-| Racine du site   | racine du repo      |
-
-Le fichier `server.js` sert le dossier `dist/` (équivalent de `next start` pour un site statique).
-
-Variables d’environnement (panel Hostinger) :
-
-```
-VITE_SITE_URL=https://ton-domaine.fr
-PORT=3000
-```
-
-Puis **redéploie** après chaque modification.
+| Nom | Valeur |
+|-----|--------|
+| `VITE_SITE_URL` | `https://ton-domaine.fr` (ton URL Hostinger) |
+| `NODE_ENV` | `production` |
 
 ---
 
-## Option 3 — GitHub + Hostinger
+## Pourquoi ça plantait
 
-1. Repo : https://github.com/nabil13090/snack  
-2. Dans Hostinger : **Sites web → Git** → connecter le dépôt.  
-3. Choisir l’option 1 (build local + upload `dist`) **ou** l’option 2 (Node.js).
+1. **Répertoire de sortie `build`** — Vite mettait les fichiers dans `dist/` → Hostinger ne trouvait rien.  
+   → Corrigé : le site est maintenant compilé dans **`build/`**.
+
+2. **Préréglage « Create React App »** — pas adapté à un projet Vite.  
+   → Utilise **Express** (on a `server.js` + `npm start`) ou **Autre**.
+
+3. **Config TypeScript** — parfois bloquée sur le serveur Linux.  
+   → Config Vite en **`vite.config.mjs`** (JavaScript simple).
 
 ---
 
-## Dépannage
+## Option A — Express (comme un vrai site Node)
 
-| Problème | Solution |
-|----------|----------|
-| Page blanche | Vérifier que `index.html` est à la racine de `public_html` |
-| 404 sur `/carte` | Fichier `.htaccess` manquant → recopier depuis `public/.htaccess` |
-| Vidéo lourde | `videobanniere.mp4` ~40 Mo : laisser sur le CDN ou compresser |
-| Mauvais domaine SEO | Définir `VITE_SITE_URL` avant `npm run build` |
+- Préréglage : **Express**
+- Build : `npm install && npm run build`
+- Start : `npm start`
+- Sortie : `build`
+
+## Option B — Site statique uniquement
+
+- Préréglage : **Autre**
+- Build : `npm install && npm run build`
+- Répertoire de sortie : `build`
+- Pas de commande start
+
+---
+
+## Repo GitHub
+
+https://github.com/nabil13090/snack
+
+Après chaque push sur `main`, clique **Redéployer** dans Hostinger.
