@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Outfit", sans-serif;
+
+  /* Identité Snack Du Lion — vert & blanc */
+  --color-brand-primary: #00704A;
+  --color-brand-primary-dark: #005a3c;
+  --color-brand-secondary: #E8F5E9;
+  --color-brand-accent: #A4D65E;
+  --color-brand-dark: #0A0A0A;
+  --color-brand-dark-accent: #111811;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-brand-dark text-white font-sans antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    @apply font-display tracking-normal;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}

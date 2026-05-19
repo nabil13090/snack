@@ -1,0 +1,10 @@
+# Snack Du Lion — Aix-en-Provence
+User-agent: *
+Allow: /
+
+# Pages légales : indexation limitée (contenu secondaire)
+Disallow: /cgv
+Disallow: /politique-confidentialite
+Disallow: /politique-cookies
+
+Sitemap: https://www.snackdulion.fr/sitemap.xml

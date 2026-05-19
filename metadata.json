@@ -1,0 +1,6 @@
+{
+  "name": "Chicken Street Premium",
+  "description": "A modern, high-energy gourmet street food restaurant landing page with premium visuals and smooth animations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

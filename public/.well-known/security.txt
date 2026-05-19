@@ -1,0 +1,3 @@
+Contact: mailto:contact@snackdulion.fr
+Preferred-Languages: fr, en
+Canonical: https://www.snackdulion.fr/.well-known/security.txt

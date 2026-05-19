@@ -1,0 +1,18 @@
+{
+  "name": "Snack Du Lion — Fast-food Aix-en-Provence",
+  "short_name": "Snack Du Lion",
+  "description": "Pizzas, tacos, burgers et sandwichs à Aix-en-Provence",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#00704A",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
