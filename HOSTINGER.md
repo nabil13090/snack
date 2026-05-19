@@ -29,7 +29,10 @@ Si tu déploies via **Git + Node.js** (même workflow que `te3coms-portfolio`) :
 | Branche Git      | `main`              |
 | Build command    | `npm install && npm run build` |
 | Start command    | `npm start`         |
-| Version Node     | 18.x ou 20.x        |
+| Version Node     | 20.x (recommandé)   |
+| Racine           | `/` (racine du repo) |
+
+> Si le build échoue encore : utilise `npm run build:hostinger` comme commande de build.
 | Racine du site   | racine du repo      |
 
 Le fichier `server.js` sert le dossier `dist/` (équivalent de `next start` pour un site statique).
